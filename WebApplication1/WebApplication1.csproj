@@ -16,10 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Documentos\" />
     <Folder Include="Views\Reportes\" />
     <Folder Include="Views\Permisos\" />
     <Folder Include="Views\Usuarios\" />
+    <Folder Include="wwwroot\archivos\" />
   </ItemGroup>
 
 </Project>

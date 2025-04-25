@@ -1,0 +1,36 @@
+﻿@model WebApplication1.Models.Documento
+
+@{
+    ViewData["Title"] = "Subir Documento";
+}
+
+<h2>Subir Documento</h2>
+
+<form asp-action="Subir" asp-controller="Documentos" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Título</label>
+        <input asp-for="Titulo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Descripción</label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Archivo</label>
+        <input type="file" name="archivo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Estado</label>
+        <input asp-for="Estado" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Versión</label>
+        <input asp-for="Version" class="form-control" type="number" />
+    </div>
+    <button type="submit" class="btn btn-primary">Subir</button>
+</form>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-warning">@ViewBag.Mensaje</div>
+}
