@@ -1,0 +1,11 @@
+﻿  <h2>Iniciar Sesión</h2>
+     @using (Html.BeginForm()) {
+         <label>Correo</label>
+         <input type="email" name="correo" />
+    
+         <label>Contraseña</label>
+         <input type="password" name="clave" />
+    
+         <button type="submit">Ingresar</button>
+         <p style="color:red">@ViewBag.Error</p>
+     }

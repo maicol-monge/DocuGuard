@@ -8,5 +8,7 @@ namespace WebApplication1.Models
 		public DbSet<Documento> Documentos { get; set; }
 		public DbSet<Permiso> Permisos { get; set; }
 
-	}
+
+
+    }
 }

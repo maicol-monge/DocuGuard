@@ -1,26 +1,34 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+﻿@{
+    // Acceder al HttpContext desde ViewContext
+    var httpContext = ViewContext.HttpContext;
+
+    // Verificar si el usuario está logueado
+    bool logueado = httpContext.Session.GetInt32("UsuarioId") != null;
+
+    // Obtener el rol del usuario si está logueado
+    string rol = logueado ? httpContext.Session.GetString("Rol") : "";
+}
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
+    @if (logueado)
+    {
+        <li class="nav-item">
+            <span class="nav-link">¡Hola @rol!</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Usuarios/EditarClave">Cambiar Contraseña</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Home/Logout">Cerrar Sesión</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" href="/Usuarios/Login">Iniciar Sesión</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Usuarios/Register">Registrarse</a>
+        </li>
+    }
 </ul>

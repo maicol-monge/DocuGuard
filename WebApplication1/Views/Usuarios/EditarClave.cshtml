@@ -1,0 +1,9 @@
+﻿ <h2>Cambiar Contraseña</h2>
+     @using (Html.BeginForm()) {
+         <label>Contraseña Actual</label>
+         <input type="password" name="claveActual" />
+         <label>Nueva Contraseña</label>
+         <input type="password" name="claveNueva" />
+         <button type="submit">Actualizar</button>
+         <p style="color:green">@ViewBag.Mensaje</p>
+     }
