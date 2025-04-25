@@ -1,0 +1,21 @@
+﻿ @model Usuario
+    
+     <h2>Registrar Usuario</h2>
+     @using (Html.BeginForm()) {
+         @Html.LabelFor(m => m.Nombre)
+         @Html.TextBoxFor(m => m.Nombre)
+
+         @Html.LabelFor(m => m.Apellido)
+         @Html.TextBoxFor(m => m.Apellido)
+
+         @Html.LabelFor(m => m.Correo)
+         @Html.TextBoxFor(m => m.Correo)
+
+         @Html.LabelFor(m => m.Clave)
+         @Html.PasswordFor(m => m.Clave)
+
+         @Html.LabelFor(m => m.Rol)
+         @Html.DropDownListFor(m => m.Rol, new SelectList(new[]{"Administrador", "Usuario"}))
+
+         <button type="submit">Registrar</button>
+     }
